@@ -16,6 +16,21 @@ let todayJson
 let tomorrowJson
 let twoDayNextJson
 
+const cityNameDiv = document.getElementById("cityNameDiv")
+const countryNameDiv = document.getElementById("countryNameDiv")
+
+const todayDate = document.getElementById("todayDate")
+const todayTemp = document.getElementById("todayTemp")
+const todayIcon = document.getElementById("todayIcon")
+
+const tomorrowWeekday = document.getElementById("tomorrowWeekday")
+const tomorrowTemp = document.getElementById("tomorrowTemp")
+const tomorrowIcon = document.getElementById("tomorrowIcon")
+
+const dayAftTomWeekday = document.getElementById("dayAftTomWeekday")
+const dayAftTomTemp = document.getElementById("dayAftTomTemp")
+const dayAftTomIcon = document.getElementById("dayAftTomIcon")
+
 function fetchAndDisplay() {
   fetch(call, { mode: "cors" })
     .then(function (response) {
@@ -38,21 +53,6 @@ function fetchAndDisplay() {
 }
 
 function displayData() {
-  const cityNameDiv = document.getElementById("cityNameDiv")
-  const countryNameDiv = document.getElementById("countryNameDiv")
-
-  const todayDate = document.getElementById("todayDate")
-  const todayTemp = document.getElementById("todayTemp")
-  const todayIcon = document.getElementById("todayIcon")
-
-  const tomorrowWeekday = document.getElementById("tomorrowWeekday")
-  const tomorrowTemp = document.getElementById("tomorrowTemp")
-  const tomorrowIcon = document.getElementById("tomorrowIcon")
-
-  const dayAftTomWeekday = document.getElementById("dayAftTomWeekday")
-  const dayAftTomTemp = document.getElementById("dayAftTomTemp")
-  const dayAftTomIcon = document.getElementById("dayAftTomIcon")
-
   const todayDateObj = Date.parse(todayJson.date)
 
   cityNameDiv.innerHTML = locationJson.name
@@ -77,6 +77,15 @@ function displayData() {
   dayAftTomIcon.src = twoDayNextJson.day.condition.icon
 
   searchTextInput.value = ""
+
+  //store temperature in celcius and fahrenheit
+  sessionStorage.setItem("todayTempC", todayJson.day.avgtemp_c)
+  sessionStorage.setItem("tomorrowTempC", todayJson.day.avgtemp_c)
+  sessionStorage.setItem("dayAftTomTempC", todayJson.day.avgtemp_c)
+
+  sessionStorage.setItem("todayTempF", todayJson.day.avgtemp_f)
+  sessionStorage.setItem("tomorrowTempF", todayJson.day.avgtemp_f)
+  sessionStorage.setItem("dayAftTomTempF", todayJson.day.avgtemp_f)
 }
 
 searchTextInput = document.getElementById("searchTextInput")
@@ -87,3 +96,26 @@ searchBtn.addEventListener("click", () => {
   call = baseURL + method + key + q + otherSettings
   fetchAndDisplay()
 })
+
+unitBtn = document.getElementById("unitBtn")
+unitBtn.addEventListener("click", () => {
+  if (unitBtn.value == "°F") {
+    todayTemp.innerHTML =
+      Math.round(sessionStorage.getItem("todayTempF")) + "°F"
+    tomorrowTemp.innerHTML =
+      Math.round(sessionStorage.getItem("tomorrowTempF")) + "°F"
+    dayAftTomTemp.innerHTML =
+      Math.round(sessionStorage.getItem("dayAftTomTempF")) + "°F"
+    unitBtn.value = "°C"
+  } else if (unitBtn.value == "°C") {
+    todayTemp.innerHTML =
+      Math.round(sessionStorage.getItem("todayTempC")) + "°C"
+    tomorrowTemp.innerHTML =
+      Math.round(sessionStorage.getItem("tomorrowTempC")) + "°C"
+    dayAftTomTemp.innerHTML =
+      Math.round(sessionStorage.getItem("dayAftTomTempC")) + "°C"
+    unitBtn.value = "°F"
+  }
+})
+
+fetchAndDisplay()
