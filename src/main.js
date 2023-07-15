@@ -3,7 +3,7 @@ import { format, getDay } from "date-fns"
 const weekdayArr = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
 
 let cityName = "London"
-const baseURL = "http://api.weatherapi.com/v1"
+const baseURL = "https://api.weatherapi.com/v1"
 const method = "/forecast.json"
 const key = "?key=15e687fcffb44214b6f30656231407"
 let q = "&q=" + cityName
@@ -12,7 +12,7 @@ let otherSettings = "&days=3&aqi=no&alerts=no"
 let call = baseURL + method + key + q + otherSettings
 
 let locationJson
-let todayJson
+let todayJsons
 let tomorrowJson
 let twoDayNextJson
 
