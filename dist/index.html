@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full w-full">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weather</title>
+    <link rel="stylesheet" href="reset.css" />
+    <link rel="stylesheet" href="output.css" />
+    <script type="module" src="main.js" defer></script>
+  </head>
+  <body
+    class="flex flex-row justify-center items-center h-full w-full bg-slate-400 p-5"
+  >
+    <div
+      id="main"
+      class="flex flex-col justify-start items-center bg-slate-300 h-auto w-80 p-5 shadow-lg"
+    >
+      <div
+        id="header"
+        class="text-slate-600 text-5xl font-semibold w-full flex flex-row text-center"
+      >
+        Weather Forecast
+      </div>
+
+      <div
+        id="searchDiv"
+        class="flex flex-row justify-center w-full mt-10 pb-5"
+      >
+        <input
+          type="text"
+          id="searchTextInput"
+          class="mb-2 w-4/5 rounded drop-shadow-lg h-10 p-3 mr-2"
+          placeholder=" enter city name"
+        />
+        <input
+          type="button"
+          name="search"
+          id="searchBtn"
+          value="Search"
+          class="bg-slate-500 p-2 h-10 rounded hover:bg-slate-600"
+        />
+        <div id="btnsDiv" class="flex flex-row justify-center px-1"></div>
+      </div>
+
+      <div
+        id="locationDiv"
+        class="flex flex-row text-start w-full text-slate-700 font-semibold text-2xl border-b-2 border-solid border-slate-400 pb-2"
+      >
+        <div id="cityNameDiv" class="mr-1">Calgary</div>
+        <div
+          id="countryNameDiv"
+          class="flex flex-row items-end justify-start text-sm"
+        >
+          Canada
+        </div>
+      </div>
+      <div
+        id="todayDiv"
+        class="flex flex-col justify-center mt-3 border-b-2 border-solid border-slate-400"
+      >
+        <div id="todayDate" class="text-slate-700 font-semibold text-lg" \>
+          Today (6.7)
+        </div>
+        <div class="flex flex-row items-center">
+          <img
+            id="todayIcon"
+            src="//cdn.weatherapi.com/weather/64x64/day/113.png"
+            alt="today's weather"
+            class="w-40 h-40"
+          />
+          <div class="flex flex-row justify-end items-end w-fit">
+            <div
+              id="todayTemp"
+              class="flex flex-col justify-end text-slate-700 font-semibold text-4xl"
+            >
+              40°C
+            </div>
+            <input
+              type="button"
+              value="°F"
+              class="bg-slate-500 h-7 w-7 ml-3 mr-10 rounded hover:bg-slate-600"
+            />
+          </div>
+        </div>
+      </div>
+      <div id="futureDiv" class="flex flex-row w-4/5 mt-3">
+        <div
+          class="grid items-center w-full h-auto grid-rows-2 grid-cols-2 border-r-2 border-solid border-slate-400"
+        >
+          <div
+            id="tomorrowWeekday"
+            class="text-slate-700 font-semibold text-md row-start-1 row-end-1 col-start-1 col-end-1 flex flex-row justify-end"
+          >
+            5.12
+          </div>
+          <div
+            id="tomorrowTemp"
+            class="text-slate-700 font-semibold text-lg row-start-2 row-end-2 col-start-1 col-end-1 flex flex-row justify-end"
+          >
+            40°C
+          </div>
+          <img
+            id="tomorrowIcon"
+            src="//cdn.weatherapi.com/weather/64x64/day/113.png"
+            alt="Day after tomorrow's weather"
+            class="row-start-1 row-end-3 col-start-2 col-end-2"
+          />
+        </div>
+        <div class="grid items-center w-full h-auto grid-rows-2 grid-cols-2">
+          <div
+            id="dayAftTomWeekday"
+            class="text-slate-700 font-semibold text-md row-start-1 row-end-1 col-start-1 col-end-1 flex flex-row justify-end"
+          >
+            5.13
+          </div>
+          <div
+            id="dayAftTomTemp"
+            class="text-slate-700 font-semibold text-lg row-start-2 row-end-2 col-start-1 col-end-1 flex flex-row justify-end"
+          >
+            55°C
+          </div>
+          <img
+            id="dayAftTomIcon"
+            src="//cdn.weatherapi.com/weather/64x64/day/113.png"
+            alt="Day after tomorrow's weather"
+            class="row-start-1 row-end-3 col-start-2 col-end-2"
+          />
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
