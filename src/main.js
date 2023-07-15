@@ -12,7 +12,7 @@ let otherSettings = "&days=3&aqi=no&alerts=no"
 let call = baseURL + method + key + q + otherSettings
 
 let locationJson
-let todayJsons
+let todayJson
 let tomorrowJson
 let twoDayNextJson
 
